@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Mehak Ali</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script:wght@700&family=Great+Vibes&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .title {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FF8C00);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldGlow 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 40px rgba(255, 215, 0, 0.5));
+            margin-bottom: 20px;
+            transform: rotate(-2deg);
+        }
+
+        @keyframes goldGlow {
+            0%, 100% {
+                background-position: 0% 50%;
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)) brightness(1);
+            }
+            50% {
+                background-position: 100% 50%;
+                filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1)) brightness(1.8);
+            }
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8em;
+            color: #FFD700;
+            font-weight: 600;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, #fa709a 0%, #fee140 100%);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: linear-gradient(45deg, #43e97b 0%, #38f9d7 100%);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-close {
+            background: linear-gradient(45deg, #f85032, #e73827);
+            color: white;
+        }
+
+        .btn-close:hover {
+            background: linear-gradient(45deg, #ffd89b, #19547b);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .envelope-container {
+            display: none;
+            margin: 30px auto;
+            max-width: 600px;
+            perspective: 1000px;
+        }
+
+        .envelope-container.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        .envelope {
+            position: relative;
+            width: 100%;
+            min-height: 450px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            transform-origin: top;
+            transition: transform 0.6s ease;
+            border-radius: 15px 15px 0 0;
+            border: 3px solid #e91e63;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        .envelope-container.open .envelope-flap {
+            transform: rotateX(-180deg);
+        }
+
+        .envelope-body {
+            position: relative;
+            width: 100%;
+            min-height: 450px;
+            background: linear-gradient(135deg, #87ceeb 0%, #5fa9d8 100%);
+            border: 3px solid #e91e63;
+            border-radius: 15px;
+            padding: 40px 30px 30px 30px;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .message {
+            font-size: 1.15em;
+            line-height: 1.8;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FF8C00);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldGlow 2s ease-in-out infinite;
+            text-align: justify;
+            margin-bottom: 20px;
+            font-weight: 600;
+            min-height: 200px;
+        }
+
+        .wish-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%);
+            border-radius: 20px;
+            display: none;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .wish-section.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        .wish-input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .wish-input:focus {
+            outline: none;
+            border-color: #FFA500;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+            transform: scale(1.02);
+        }
+
+        .language-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .tab:hover {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .tab.active {
+            background: linear-gradient(45deg, #fa709a 0%, #fee140 100%);
+            transform: scale(1.05);
+        }
+
+        .wish-form {
+            display: none;
+        }
+
+        .wish-form.active {
+            display: block;
+        }
+
+        .reply-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 15px;
+            display: none;
+            border: 3px solid #FFD700;
+        }
+
+        .reply-section.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            animation: float 6s infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .popper {
+            position: fixed;
+            font-size: 3em;
+            animation: pop 1s ease-out;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes pop {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(0.5) translateY(-200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .footer {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .created-by {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite, sparkle 2s ease-in-out infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                filter: brightness(1) drop-shadow(0 0 5px rgba(255, 0, 128, 0.5));
+            }
+            50% { 
+                filter: brightness(1.5) drop-shadow(0 0 20px rgba(255, 0, 128, 0.8));
+            }
+        }
+
+        .heart-icon {
+            display: inline-block;
+            color: #ff1493;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            font-size: 2.2rem;
+            margin: 0 10px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+
+        .envelope-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <div class="main-content">
+        <div class="container">
+            <h1 class="title">Happy Birthday My Dear Cutie Princess Mehak Ali</h1>
+            <h2 class="subtitle">🎂 Birthday Girl 8th April 🎂</h2>
+
+            <button class="btn btn-primary" onclick="openEnvelope1()">📧 Open Kro</button>
+
+            <div class="envelope-container" id="envelopeContainer1">
+                <div class="envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-body">
+                        <p class="message" id="message1"></p>
+                        <div class="envelope-buttons">
+                            <button class="btn btn-close" onclick="closeEnvelope('envelopeContainer1')">❌ Isko Close Kro</button>
+                            <button class="btn btn-secondary" onclick="openEnvelope2()">💌 Isko Bhi Open Krlo</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="envelope-container" id="envelopeContainer2">
+                <div class="envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-body">
+                        <p class="message" id="message2"></p>
+                        <div class="envelope-buttons">
+                            <button class="btn btn-close" onclick="closeEnvelope('envelopeContainer2')">❌ Isko Close Kro</button>
+                            <button class="btn btn-primary" onclick="showReply()">💝 Reply Me Here</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reply-section" id="replySection">
+                <h3 style="color: #e91e63; margin-bottom: 15px;">💕 Apna Jawab Yahan Likhen 💕</h3>
+                <form id="replyForm">
+                    <input type="text" class="wish-input" id="userName" placeholder="Apna Naam" required>
+                    <input type="email" class="wish-input" id="userEmail" placeholder="Apni Email Address" required>
+                    <textarea class="wish-input" id="replyMessage" rows="4" placeholder="Apna jawab yahan likhein..." required></textarea>
+                    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                        <button type="submit" class="btn btn-secondary">📤 Jawab Bhejein</button>
+                        <button type="button" class="btn btn-close" onclick="closeReplySection()">❌ Close Kro</button>
+                    </div>
+                </form>
+            </div>
+
+            <button class="btn btn-primary" onclick="showWishSection()" style="margin-top: 30px;">✨ Add Your Wish</button>
+
+            <div class="wish-section" id="wishSection">
+                <h3 style="color: #FFD700; margin-bottom: 20px; text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);">💫 Apni Wish Yahan Likhein 💫</h3>
+                
+                <div class="language-tabs">
+                    <button class="tab active" onclick="switchLanguage('urdu')">اردو</button>
+                    <button class="tab" onclick="switchLanguage('english')">English</button>
+                    <button class="tab" onclick="switchLanguage('sindhi')">سنڌي</button>
+                </div>
+
+                <form class="wish-form active" id="urduForm">
+                    <input type="text" class="wish-input" name="name" placeholder="اپنا نام" required>
+                    <input type="email" class="wish-input" name="email" placeholder="اپنی ای میل" required>
+                    <textarea class="wish-input" name="wish" rows="4" placeholder="اپنی خواہش یہاں لکھیں..." required></textarea>
+                    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                        <button type="submit" class="btn btn-primary">💌 Wish Bhejein</button>
+                        <button type="button" class="btn btn-close" onclick="closeWishSection()">❌ Close Kro</button>
+                    </div>
+                </form>
+
+                <form class="wish-form" id="englishForm">
+                    <input type="text" class="wish-input" name="name" placeholder="Your Name" required>
+                    <input type="email" class="wish-input" name="email" placeholder="Your Email" required>
+                    <textarea class="wish-input" name="wish" rows="4" placeholder="Write your wish here..." required></textarea>
+                    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                        <button type="submit" class="btn btn-primary">💌 Send Wish</button>
+                        <button type="button" class="btn btn-close" onclick="closeWishSection()">❌ Close Kro</button>
+                    </div>
+                </form>
+
+                <form class="wish-form" id="sindhiForm">
+                    <input type="text" class="wish-input" name="name" placeholder="توهان جو نالو" required>
+                    <input type="email" class="wish-input" name="email" placeholder="توهان جي اي ميل" required>
+                    <textarea class="wish-input" name="wish" rows="4" placeholder="پنهنجي خواهش هتي لکو..." required></textarea>
+                    <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
+                        <button type="submit" class="btn btn-primary">💌 خواهش موڪليو</button>
+                        <button type="button" class="btn btn-close" onclick="closeWishSection()">❌ Close Kro</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="created-by">Created with <span class="heart-icon">❤️</span> By Usama Sharif</div>
+        <div class="created-by">Created with <span class="heart-icon">❤️</span> For Princess Mehak Ali</div>
+    </div>
+
+    <script>
+        const message1Text = "Allah Pak apko hmesha khush rkhe meri princess ap hmesha happy rho meri yhe dua he apka aane wala kl best and happy ho or ap kbhi bhi sad na ho me apke sathhu hmesha apko jb bhi koi problem ho ap mujhe batana me apki is problem ko solve krunga or apke chehre pr muskraaht le aaunga me apko sad nhi dekh skta meri princess ap mere lie chand jc ho blkey mere lie to ap he chand ho";
+        
+        const message2Text = "Meri ek he khuwahish he k me apko apna life partner bnana chahta hu kia ap is pr raazi ho me apke is jwaab ka muntazir rhunga or In Sha Allah apka jwaab musbt ho";
+
+        function typeWriter(text, elementId, speed = 50) {
+            let i = 0;
+            const element = document.getElementById(elementId);
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Party Poppers
+        function createPopper() {
+            const poppers = ['🎉', '🎊', '✨', '🎈', '🎁', '🌟', '💖', '🎀', '🦋', '🌸'];
+            const popper = document.createElement('div');
+            popper.className = 'popper';
+            popper.innerHTML = poppers[Math.floor(Math.random() * poppers.length)];
+            popper.style.left = Math.random() * window.innerWidth + 'px';
+            popper.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(popper);
+            setTimeout(() => popper.remove(), 1000);
+        }
+
+        setInterval(createPopper, 200);
+
+        // Floating hearts
+        function createHeart() {
+            const hearts = ['💖', '💕', '💗', '💝', '💘', '❤️', '🌹'];
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+
+        setInterval(createHeart, 300);
+
+        function openEnvelope1() {
+            const container = document.getElementById('envelopeContainer1');
+            container.classList.add('show');
+            setTimeout(() => {
+                container.classList.add('open');
+                typeWriter(message1Text, 'message1');
+            }, 100);
+            createMultiplePoppers();
+        }
+
+        function openEnvelope2() {
+            const container = document.getElementById('envelopeContainer2');
+            container.classList.add('show');
+            setTimeout(() => {
+                container.classList.add('open');
+                typeWriter(message2Text, 'message2');
+            }, 100);
+            createMultiplePoppers();
+        }
+
+        function closeEnvelope(containerId) {
+            const container = document.getElementById(containerId);
+            container.classList.remove('show');
+            container.classList.remove('open');
+            if (containerId === 'envelopeContainer1') {
+                document.getElementById('message1').innerHTML = '';
+            } else {
+                document.getElementById('message2').innerHTML = '';
+            }
+        }
+
+        function createMultiplePoppers() {
+            for(let i = 0; i < 20; i++) {
+                setTimeout(createPopper, i * 50);
+            }
+        }
+
+        function showReply() {
+            document.getElementById('replySection').classList.add('show');
+            createMultiplePoppers();
+        }
+
+        function closeReplySection() {
+            document.getElementById('replySection').classList.remove('show');
+            document.getElementById('replyForm').reset();
+        }
+
+        function closeWishSection() {
+            document.getElementById('wishSection').classList.remove('show');
+        }
+
+        // Reply Form Handler
+        document.getElementById('replyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const message = document.getElementById('replyMessage').value;
+            
+            alert('✅ Apka jawab successfully bhej diya gaya hai! Mehak ko mil jayega! 💝');
+            this.reset();
+            createMultiplePoppers();
+        });
+
+        function showWishSection() {
+            document.getElementById('wishSection').classList.add('show');
+            createMultiplePoppers();
+        }
+
+        function switchLanguage(lang) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.wish-form').forEach(f => f.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            
+            if (lang === 'urdu') {
+                document.getElementById('urduForm').classList.add('active');
+            } else if (lang === 'english') {
+                document.getElementById('englishForm').classList.add('active');
+            } else if (lang === 'sindhi') {
+                document.getElementById('sindhiForm').classList.add('active');
+            }
+        }
+
+        // Wish forms handler
+        document.querySelectorAll('.wish-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = this.querySelector('input[name="name"]').value;
+                const email = this.querySelector('input[name="email"]').value;
+                const wish = this.querySelector('textarea[name="wish"]').value;
+
+                alert('🎉 Apki wish successfully bhej di gayi hai! 💖');
+                this.reset();
+                createMultiplePoppers();
+            });
+        });
+    </script>
+</body>
+</html>
