@@ -457,6 +457,28 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
 
+        .time-box-large {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 25px;
+            padding: 30px 40px;
+            min-width: 150px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            border: 3px solid rgba(255, 215, 0, 0.8);
+            transition: transform 0.3s ease;
+            animation: countdownPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes countdownPulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            }
+            50% { 
+                transform: scale(1.1);
+                box-shadow: 0 15px 50px rgba(255, 215, 0, 0.6);
+            }
+        }
+
         .time-value {
             font-size: 2em;
             font-weight: bold;
@@ -465,12 +487,40 @@
             font-family: 'Courier New', monospace;
         }
 
+        .time-value-large {
+            font-size: 5em;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.8);
+            font-family: 'Pacifico', cursive;
+            animation: numberGlow 0.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes numberGlow {
+            from {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.8);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 165, 0, 0.8);
+            }
+        }
+
         .time-label {
             font-size: 0.8em;
             color: #fff;
             margin-top: 5px;
             font-weight: 600;
             text-transform: uppercase;
+        }
+
+        .countdown-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+            color: #FFD700;
+            margin-top: 15px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+            animation: pulse 1.5s ease-in-out infinite;
         }
 
         .birthday-message {
@@ -486,9 +536,108 @@
             display: block;
         }
 
+        .birthday-message.flying {
+            animation: flyUp 3s ease-in-out infinite;
+        }
+
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.6; }
+        }
+
+        @keyframes flyUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-30px) scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .flying-letters {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            overflow: hidden;
+        }
+
+        .letter {
+            position: absolute;
+            font-family: 'Pacifico', cursive;
+            font-size: 2em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FF8C00);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: letterFly 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+        }
+
+        @keyframes letterFly {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            60% {
+                transform: translateY(10vh) rotate(180deg) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(10vh) rotate(180deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .message-display {
+            position: fixed;
+            top: 10vh;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 800px;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700, #FF8C00);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: goldGlow 2s ease-in-out infinite, bounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+            z-index: 1000;
+            display: none;
+            line-height: 1.4;
+            padding: 20px;
+        }
+
+        .message-display.show {
+            display: block;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-20px) scale(1.05);
+            }
         }
 
         /* Mobile specific optimizations */
@@ -536,6 +685,19 @@
                 font-size: 1.1em;
             }
 
+            .time-box-large {
+                min-width: 120px;
+                padding: 20px 30px;
+            }
+
+            .time-value-large {
+                font-size: 3.5em;
+            }
+
+            .countdown-text {
+                font-size: 1.2em;
+            }
+
             .time-box {
                 min-width: 60px;
                 padding: 10px 12px;
@@ -552,38 +714,60 @@
             .birthday-message {
                 font-size: 1.1em;
             }
+
+            .letter {
+                font-size: 1.3em;
+            }
+
+            .message-display {
+                font-size: 1.2em;
+                padding: 15px;
+                width: 95%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="floating-hearts" id="hearts"></div>
+    <div class="flying-letters" id="flyingLetters"></div>
+    <div class="message-display" id="messageDisplay"></div>
     
     <div class="main-content">
         <div class="container">
             <h1 class="title">Happy Birthday My Dear Cutie Princess Mehak Ali</h1>
             <h2 class="subtitle">🎂 Birthday Girl 8th April 🎂</h2>
 
-            <div class="countdown-container" id="countdownContainer">
-                <h3 class="countdown-title">⏰ Birthday Countdown ⏰</h3>
+            <div class="countdown-container" id="realTimeCountdown">
+                <h3 class="countdown-title">⏰ Birthday Countdown - 8th April 2026 ⏰</h3>
                 <div class="countdown-timer">
                     <div class="time-box">
-                        <div class="time-value" id="days">00</div>
+                        <div class="time-value" id="realDays">00</div>
                         <div class="time-label">Days</div>
                     </div>
                     <div class="time-box">
-                        <div class="time-value" id="hours">00</div>
+                        <div class="time-value" id="realHours">00</div>
                         <div class="time-label">Hours</div>
                     </div>
                     <div class="time-box">
-                        <div class="time-value" id="minutes">00</div>
+                        <div class="time-value" id="realMinutes">00</div>
                         <div class="time-label">Minutes</div>
                     </div>
                     <div class="time-box">
-                        <div class="time-value" id="seconds">00</div>
+                        <div class="time-value" id="realSeconds">00</div>
                         <div class="time-label">Seconds</div>
                     </div>
                 </div>
-                <div class="birthday-message" id="birthdayMessage"></div>
+            </div>
+
+            <div class="countdown-container" id="fiveSecCountdown" style="display: none;">
+                <h3 class="countdown-title">⏰ Birthday Celebration Starting In ⏰</h3>
+                <div class="countdown-timer">
+                    <div class="time-box-large">
+                        <div class="time-value-large" id="countdownNumber">5</div>
+                        <div class="time-label">Seconds</div>
+                    </div>
+                </div>
+                <div class="countdown-text" id="countdownText">Get Ready! 🎉</div>
             </div>
 
             <button class="btn btn-primary" onclick="openEnvelope1()">📧 Open Kro</button>
@@ -681,20 +865,36 @@
         
         const message2Text = "Meri ek he khuwahish he k me apko apna life partner bnana chahta hu kia ap is pr raazi ho me apke is jwaab ka muntazir rhunga or In Sha Allah apka jwaab musbt ho";
 
-        // Countdown Timer
+        // Real-time Birthday Countdown
         const birthdayDate = new Date('2026-04-08T00:00:00').getTime();
+        let realTimeInterval;
+        let birthdayReached = false;
+        
+        // 5 Second Countdown
+        let countdownSeconds = 5;
+        let countdownInterval;
+        let currentMessageIndex = 0;
 
-        function updateCountdown() {
+        function updateRealTimeCountdown() {
             const now = new Date().getTime();
             const distance = birthdayDate - now;
 
             if (distance < 0) {
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                document.getElementById('seconds').innerText = '00';
-                document.getElementById('birthdayMessage').innerText = '🎉 Happy Birthday Mehak Ali! 🎉';
-                document.getElementById('birthdayMessage').classList.add('show');
+                // Birthday has arrived!
+                clearInterval(realTimeInterval);
+                
+                if (!birthdayReached) {
+                    birthdayReached = true;
+                    
+                    // Hide real-time countdown
+                    document.getElementById('realTimeCountdown').style.display = 'none';
+                    
+                    // Show 5-second countdown
+                    document.getElementById('fiveSecCountdown').style.display = 'block';
+                    
+                    // Start 5-second countdown
+                    start5SecondCountdown();
+                }
                 return;
             }
 
@@ -703,14 +903,109 @@
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            document.getElementById('realDays').innerText = String(days).padStart(2, '0');
+            document.getElementById('realHours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('realMinutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('realSeconds').innerText = String(seconds).padStart(2, '0');
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+        function start5SecondCountdown() {
+            countdownInterval = setInterval(update5SecCountdown, 1000);
+            update5SecCountdown();
+        }
+
+        function update5SecCountdown() {
+            if (countdownSeconds >= 0) {
+                // Update the countdown number
+                document.getElementById('countdownNumber').innerText = countdownSeconds;
+                
+                // Update text based on countdown
+                const countdownText = document.getElementById('countdownText');
+                if (countdownSeconds === 5) {
+                    countdownText.innerText = 'Get Ready! 🎉';
+                } else if (countdownSeconds === 3) {
+                    countdownText.innerText = 'Almost There! 🎊';
+                } else if (countdownSeconds === 1) {
+                    countdownText.innerText = 'Here We Go! 🎈';
+                } else if (countdownSeconds === 0) {
+                    countdownText.innerText = 'CELEBRATION TIME! 🎉🎊✨';
+                }
+                
+                if (countdownSeconds === 0) {
+                    clearInterval(countdownInterval);
+                    
+                    // Hide 5-second countdown after 1.5 seconds
+                    setTimeout(() => {
+                        document.getElementById('fiveSecCountdown').style.display = 'none';
+                    }, 1500);
+                    
+                    // Start flying letters animation
+                    setTimeout(() => {
+                        showNextMessage();
+                    }, 500);
+                    
+                    // Create massive celebration
+                    for(let i = 0; i < 100; i++) {
+                        setTimeout(createPopper, i * 30);
+                    }
+                }
+                
+                countdownSeconds--;
+            }
+        }
+
+        function createFlyingLetter(text, index) {
+            const letter = document.createElement('div');
+            letter.className = 'letter';
+            letter.innerText = text;
+            letter.style.left = Math.random() * 90 + '%';
+            letter.style.animationDelay = (index * 0.1) + 's';
+            letter.style.animationDuration = '4s';
+            letter.style.animationFillMode = 'forwards';
+            document.getElementById('flyingLetters').appendChild(letter);
+        }
+
+        function showNextMessage() {
+            const messages = [
+                "Happy Birthday to you my dear cutie princess 🎂💖",
+                "Happy Birthday my dear cutie princess 🌟💝✨",
+                "Mehak Ali Happy Birthday 🎈🎊💕",
+                "Many Many Happy Returns of the Day 🎁🎂🌹"
+            ];
+            
+            const messageDisplay = document.getElementById('messageDisplay');
+            const flyingLetters = document.getElementById('flyingLetters');
+            
+            // Clear previous letters
+            flyingLetters.innerHTML = '';
+            
+            // Show current message
+            const currentMessage = messages[currentMessageIndex];
+            
+            // Create flying letters
+            for (let i = 0; i < currentMessage.length; i++) {
+                setTimeout(() => {
+                    createFlyingLetter(currentMessage[i], i);
+                }, i * 50);
+            }
+            
+            // Show gathered message after letters fly up
+            setTimeout(() => {
+                messageDisplay.innerText = currentMessage;
+                messageDisplay.classList.add('show');
+            }, currentMessage.length * 50 + 3000);
+            
+            // Hide and move to next message
+            setTimeout(() => {
+                messageDisplay.classList.remove('show');
+                currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+                showNextMessage();
+            }, currentMessage.length * 50 + 7000);
+        }
+
+        // Start real-time countdown on page load
+        realTimeInterval = setInterval(updateRealTimeCountdown, 1000);
+        updateRealTimeCountdown();
 
         function typeWriter(text, elementId, speed = 50) {
             let i = 0;
